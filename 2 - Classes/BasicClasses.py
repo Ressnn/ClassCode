@@ -54,7 +54,8 @@ class Pencil():
         self.m = manfname
         self.ismech = mechanical
         self.ID = ID
-    
+    def write(self):
+        return "wrote"
 
 C = Cat("Walace","White and Orange")
     
