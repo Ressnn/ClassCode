@@ -6,7 +6,8 @@ import numpy as np
 import Players
 
 class AsteroidsGame():
-    def __init__(self,size=(800,600)):
+    def __init__(self,size=(1200,800)):
+        self.timer = 0
         self.dims = np.array(size)
         
         pg.init()
@@ -25,9 +26,10 @@ class AsteroidsGame():
     
     def initialize(self):
         self.global_group = pg.sprite.Group()
+        self.asteroids = pg.sprite.Group()
         self.player_sprite = Players.Ship(self.dims[0],self.dims[1])
         self.global_group.add(self.player_sprite)
-    
+        
         
     
     def draw(self):
@@ -39,17 +41,26 @@ class AsteroidsGame():
     def ship_movement(self):
         key_states = pg.key.get_pressed()
         if key_states[pg.K_UP]:
-            self.player_sprite.thrust(0.01)
+            self.player_sprite.thrust(0.05)
         if key_states[pg.K_DOWN]:
-            self.player_sprite.thrust(-0.01)
+            self.player_sprite.thrust(-0.05)
         if key_states[pg.K_LEFT]:
-            self.player_sprite.rotate(-1)
+            self.player_sprite.rotate(2.5)
         if key_states[pg.K_RIGHT]:
-            self.player_sprite.rotate(1)
+            self.player_sprite.rotate(-2.5)
+            
+    def spawn_asteriods(self):
+        if self.timer % 100 == 0:
+            print(self.timer)
+            asteriod = Players.Asteroid(self.dims[0],self.dims[1])
+            self.asteroids.add(asteriod)
+            self.global_group.add(asteriod)
+            
     def game_loop(self):
         leave_game = False
-        
+        self.timer += 1
         self.ship_movement()
+        self.spawn_asteriods()
         self.global_group.update()
         self.draw()
         
