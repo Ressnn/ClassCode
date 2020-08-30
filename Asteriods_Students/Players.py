@@ -33,7 +33,7 @@ class Ship(pygame.sprite.Sprite):
         self.rect.center = self.subcenter
         
 class Asteroid(pygame.sprite.Sprite):
-    def __init__(self,width,height,buffer=20,buffer2=50):
+    def __init__(self,width,height,buffer=20,buffer2=30):
         pygame.sprite.Sprite.__init__(self)
         
         paths = [os.path.join("Assets/Asteriods",i) for 
@@ -76,8 +76,8 @@ class Asteroid(pygame.sprite.Sprite):
         self.image = pygame.transform.rotate(self.original_image,self.rot)
         self.rect = self.image.get_rect(center=self.rect.center)
         
-        location = np.array([self.rect.x,self.rect.y])
-        if (location< -np.array([0,0])-self.buffer2).any() or \
+        location = np.array(self.rect.center)
+        if (location<-np.array([0,0])-self.buffer2).any() or \
         (location>np.array([self.w,self.h])+self.buffer2).any():
             self.kill()
         
