@@ -1,0 +1,68 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Oct 10 15:01:19 2020
+
+@author: Pranav Devarinti
+"""
+
+
+# In[] Question 1:
+X = [1,2,3,4]
+# get 2 and 4 in one line
+print(X[1::2])
+
+# In[] Question 2
+
+#Iterate each x_val through y(x) and get back y_val
+#put in list y_vals
+
+def y(x):
+    return x**2
+
+x_vals = [1,2,3,4,5,6]
+y_vals = [y(i) for i in x_vals]
+
+# In[] Question 3
+
+#Make a grid
+
+"""
+    A   B   C
+D  AD   BD  CD
+
+E  AE   BE  CE
+
+F  AF   BF  CF
+
+1. get letters
+2. arrange letters in places
+3. for each square combine its x and y
+    - go through each x value
+    - for each x value go through every y value
+    - combine the x and y
+"""
+
+
+letters_list_x = ["A","B","C"]
+letters_list_y = ["D","E","F"]
+
+table = []
+for x in letters_list_x:
+    row = []
+    for y in letters_list_y:
+        row.append(x+y)
+    table.append(row)
+    
+# In[] Question 5
+
+#add in one line
+#use zip function
+
+
+a = [1,2,3,4,5,4,3,2,1]
+b = [1,2,3,4,5,4,3,2,1]
+c =                    #a+b
+
+# In[]
+
+
